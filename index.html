@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>$PEPE ON XRP – Community Crypto</title>
+
+<style>
+:root{
+--accent:#39ff14;
+--bg:#000;
+--card:#040604;
+--text:#eaffea;
+--muted:#7ed957;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+body{
+background:#000;
+color:var(--text);
+overflow-x:hidden;
+}
+
+/* BACKGROUND LAYERS */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 50% 0%,rgba(57,255,20,.28),transparent 60%),
+radial-gradient(circle at 80% 90%,rgba(0,255,120,.22),transparent 55%);
+z-index:-3;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background-image:
+repeating-linear-gradient(0deg,rgba(57,255,20,.07) 0 1px,transparent 1px 70px),
+repeating-linear-gradient(90deg,rgba(57,255,20,.07) 0 1px,transparent 1px 70px);
+animation:gridMove 14s linear infinite;
+z-index:-2;
+}
+
+@keyframes gridMove{
+from{transform:translateY(0)}
+to{transform:translateY(70px)}
+}
+
+canvas{
+position:fixed;
+inset:0;
+z-index:-1;
+opacity:.9;
+}
+
+section{
+max-width:1200px;
+margin:auto;
+padding:80px 20px;
+}
+
+.hero{
+display:grid;
+gap:40px;
+align-items:center;
+}
+@media(min-width:800px){
+.hero{grid-template-columns:1.1fr .9fr}
+}
+
+/* BUTTONS */
+.btn{
+display:inline-block;
+padding:14px 26px;
+margin:6px;
+background:linear-gradient(90deg,#39ff14,#0f0);
+color:#000;
+font-weight:800;
+border-radius:10px;
+text-decoration:none;
+transition:.2s;
+box-shadow:0 0 22px rgba(57,255,20,.45);
+border:none;
+cursor:pointer;
+}
+.btn:hover{
+transform:translateY(-3px) scale(1.03);
+}
+
+/* CARDS */
+.card{
+background:rgba(4,10,4,.88);
+border:1px solid rgba(57,255,20,.15);
+backdrop-filter:blur(12px);
+border-radius:16px;
+padding:22px;
+text-align:center;
+}
+
+/* IMAGES */
+.img-wrap{
+width:100%;
+margin:auto;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 0 25px rgba(57,255,20,.35);
+}
+.img-wrap img{
+width:100%;
+height:340px;          
+object-fit:cover;      
+object-position:center;
+}
+
+/* PEPE CATCHER GAME */
+#catcher{
+max-width:600px;
+margin:40px auto;
+padding:20px;
+background:#010401;
+border:1px solid var(--accent);
+border-radius:16px;
+text-align:center;
+position:relative;
+overflow:hidden;
+height:400px;
+}
+
+#basket{
+position:absolute;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+width:100px;
+height:30px;
+background:linear-gradient(90deg,#39ff14,#0f0);
+border-radius:12px;
+box-shadow:0 0 20px rgba(57,255,20,.5);
+}
+
+.pepe-drop{
+position:absolute;
+top:-50px;
+width:40px;
+height:40px;
+border-radius:50%;
+pointer-events:none;
+user-select:none;
+box-shadow:0 0 15px #39ff14;
+}
+
+#scoreBoard{
+font-size:20px;
+color:#7ed957;
+margin-bottom:12px;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<!-- HERO -->
+<section class="hero">
+<div>
+<h1>$PEPE ON XRP</h1>
+<p>The ultimate meme ecosystem on XRP Ledger — NFTs, GameFi, community governance and unstoppable frog energy.</p>
+
+<a class="btn" href="#" id="buyLink">Buy $PEPE</a>
+<a class="btn" href="https://xrp.cafe/de/collection/pepe-mosaic-nft-collection" target="_blank">NFT Path</a>
+
+<a class="btn" href="https://www.tiktok.com/@pepe_on_xrp?_t=8ruE1SfndRm&_r=1" target="_blank">
+TikTok
+</a>
+
+<a class="btn" href="https://x.com/PEPE_ON_XRPL" target="_blank">Twitter</a>
+
+</div>
+
+<div class="img-wrap">
+<img src="PEPE 21.jpg">
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="hero">
+<div class="img-wrap">
+  <img src="PEPE 10.jpg">
+</div>
+<div>
+<h2>About $PEPE ON XRP</h2>
+<p>A next generation meme token built on XRP Ledger combining NFTs, gaming utilities and real community power.</p>
+</div>
+</section>
+
+<!-- UTILITIES -->
+<section class="hero">
+<div class="card">
+<h3>NFT Path</h3>
+<p>Mint, upgrade and evolve your Pepe NFTs on-chain.</p>
+</div>
+<div class="card">
+<h3>GameFi</h3>
+<p>Interactive games and fun challenges for community engagement.</p>
+</div>
+</section>
+
+<!-- PEPE CATCHER GAME -->
+<section id="catcher">
+<h2>🎯 Catch the $PEPE Image!</h2>
+<div id="scoreBoard">Score: 0</div>
+<div id="basket"></div>
+</section>
+
+<!-- DEX SCREENER CHART -->
+<section>
+<h2 style="text-align:center;margin-bottom:20px">📈 Live DEX Chart</h2>
+<div style="text-align:center;margin:10px">
+  <button class="btn" onclick="setChart('price')">Price</button>
+  <button class="btn" onclick="setChart('liquidity')">Liquidity</button>
+</div>
+<div style="
+  max-width:1100px;
+  margin:auto;
+  border:1px solid #39ff14;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 0 25px rgba(57,255,20,.3);
+">
+<iframe
+  id="dexChart"
+  src="https://dexscreener.com/xrpl/5045504500000000000000000000000000000000.rjeapmjv7kvvopb8nb1wxqpqyvu84vrgta_xrp?embed=1&theme=dark&trades=1&info=1"
+  style="width:100%;height:600px;border:0;">
+</iframe>
+</div>
+<p style="text-align:center;color:#7ed957;margin-top:10px">Data powered by DEX Screener</p>
+</section>
+
+<!-- COMMUNITY -->
+<section class="hero">
+<div class="img-wrap">
+  <img src="PEPE 6.jpg">
+</div>
+<div>
+<h2>Join the Frog Army</h2>
+<a class="btn">Telegram</a>
+<a class="btn">Discord</a>
+</div>
+</section>
+
+<footer>
+<p>© <span id="year"></span> $PEPE ON XRP. All Rights Reserved.</p>
+<p>Not financial advice. Cryptocurrency involves risk.</p>
+</footer>
+
+<script>
+// BACKGROUND $PEPE RAIN
+const c=document.getElementById("bg")
+const x=c.getContext("2d")
+function resize(){c.width=innerWidth;c.height=innerHeight}
+resize()
+window.onresize=resize
+
+const symbols=["$PEPE","🐸","XRP","PEPE"]
+let particles=[]
+for(let i=0;i<70;i++){
+particles.push({x:Math.random()*c.width,y:Math.random()*c.height,speed:Math.random()*1.2+.4,size:Math.random()*18+14,text:symbols[Math.floor(Math.random()*symbols.length)],glow:Math.random()*14})
+}
+function draw(){
+x.clearRect(0,0,c.width,c.height)
+particles.forEach(p=>{
+  x.font=`bold ${p.size}px system-ui`
+  x.fillStyle="#39ff14"
+  x.shadowColor="#39ff14"
+  x.shadowBlur=p.glow
+  x.fillText(p.text,p.x,p.y)
+  p.y+=p.speed
+  if(p.y>c.height+40){p.y=-20;p.x=Math.random()*c.width;p.text=symbols[Math.floor(Math.random()*symbols.length)]}
+})
+requestAnimationFrame(draw)
+}
+draw()
+
+// PEPE CATCHER GAME WITH IMAGE & GLOW & SPEED INCREASE
+const basket=document.getElementById("basket")
+const catcher=document.getElementById("catcher")
+let score=0
+let drops=[]
+let speedBase=2
+
+constdropImg="PEPE 2.jpg" // small drop image
+
+function createDrop(){
+const drop=document.createElement("img")
+drop.src=dropImg
+drop.className="pepe-drop"
+drop.style.left=Math.random()*(catcher.clientWidth-40)+"px"
+drop.style.top="-50px"
+drop.style.width="40px"
+drop.style.height="40px"
+drop.style.boxShadow=`0 0 ${5+Math.random()*10}px #39ff14`
+catcher.appendChild(drop)
+drops.push(drop)
+}
+
+function moveDrops(){
+drops.forEach((drop,index)=>{
+  let currentTop=parseFloat(drop.style.top)
+  currentTop += speedBase + score*0.05 // increase speed as score rises
+  drop.style.top=currentTop+"px"
+  constdropRect=drop.getBoundingClientRect()
+  constbasketRect=basket.getBoundingClientRect()
+  if(!(dropRect.bottom<basketRect.top || dropRect.top>basketRect.bottom || dropRect.right<basketRect.left || dropRect.left>basketRect.right)){
+   score++
+   document.getElementById("scoreBoard").innerText="Score: "+score
+   drop.remove()
+   drops.splice(index,1)
+  } else if(currentTop>catcher.clientHeight){
+   drop.remove()
+   drops.splice(index,1)
+  }
+})
+requestAnimationFrame(moveDrops)
+}
+
+function moveBasket(e){
+constrect=catcher.getBoundingClientRect()
+let x
+if(e.type==="mousemove") x=e.clientX-rect.left-basket.clientWidth/2
+else if(e.type==="touchmove") x=e.touches[0].clientX-rect.left-basket.clientWidth/2
+if(x<0) x=0
+if(x>catcher.clientWidth-basket.clientWidth) x=catcher.clientWidth-basket.clientWidth
+basket.style.left=x+"px"
+}
+
+catcher.addEventListener("mousemove",moveBasket)
+catcher.addEventListener("touchmove",moveBasket)
+
+setInterval(createDrop,800)
+moveDrops()
+
+// DEX CHART SWITCHER
+function setChart(type){
+const base="https://dexscreener.com/xrpl/5045504500000000000000000000000000000000.rjeapmjv7kvvopb8nb1wxqpqyvu84vrgta_xrp?embed=1&theme=dark"
+const modes={
+  price: base + "&trades=1",
+  liquidity: base + "&info=1"
+}
+document.getElementById("dexChart").src = modes[type]
+}
+
+// YEAR
+document.getElementById("year").innerText=new Date().getFullYear()
+</script>
+
+</body>
+</html>
+
+
+
