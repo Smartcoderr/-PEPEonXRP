@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,154 +7,154 @@
 
 <style>
 :root{
---accent:#39ff14;
---bg:#000;
---card:#040604;
---text:#eaffea;
---muted:#7ed957;
+ --accent:#39ff14;
+ --bg:#000;
+ --card:#040604;
+ --text:#eaffea;
+ --muted:#7ed957;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
 body{
-background:#000;
-color:var(--text);
-overflow-x:hidden;
+ background:#000;
+ color:var(--text);
+ overflow-x:hidden;
 }
 
 /* BACKGROUND LAYERS */
 body::before{
-content:"";
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at 50% 0%,rgba(57,255,20,.28),transparent 60%),
-radial-gradient(circle at 80% 90%,rgba(0,255,120,.22),transparent 55%);
-z-index:-3;
+ content:"";
+ position:fixed;
+ inset:0;
+ background:
+ radial-gradient(circle at 50% 0%,rgba(57,255,20,.28),transparent 60%),
+ radial-gradient(circle at 80% 90%,rgba(0,255,120,.22),transparent 55%);
+ z-index:-3;
 }
 
 body::after{
-content:"";
-position:fixed;
-inset:0;
-background-image:
-repeating-linear-gradient(0deg,rgba(57,255,20,.07) 0 1px,transparent 1px 70px),
-repeating-linear-gradient(90deg,rgba(57,255,20,.07) 0 1px,transparent 1px 70px);
-animation:gridMove 14s linear infinite;
-z-index:-2;
+ content:"";
+ position:fixed;
+ inset:0;
+ background-image:
+ repeating-linear-gradient(0deg,rgba(57,255,20,.07) 0 1px,transparent 1px 70px),
+ repeating-linear-gradient(90deg,rgba(57,255,20,.07) 0 1px,transparent 1px 70px);
+ animation:gridMove 14s linear infinite;
+ z-index:-2;
 }
 
 @keyframes gridMove{
-from{transform:translateY(0)}
-to{transform:translateY(70px)}
+ from{transform:translateY(0)}
+ to{transform:translateY(70px)}
 }
 
 canvas{
-position:fixed;
-inset:0;
-z-index:-1;
-opacity:.9;
+ position:fixed;
+ inset:0;
+ z-index:-1;
+ opacity:.9;
 }
 
 section{
-max-width:1200px;
-margin:auto;
-padding:80px 20px;
+ max-width:1200px;
+ margin:auto;
+ padding:80px 20px;
 }
 
 .hero{
-display:grid;
-gap:40px;
-align-items:center;
+ display:grid;
+ gap:40px;
+ align-items:center;
 }
 @media(min-width:800px){
-.hero{grid-template-columns:1.1fr .9fr}
+ .hero{grid-template-columns:1.1fr .9fr}
 }
 
 /* BUTTONS */
 .btn{
-display:inline-block;
-padding:14px 26px;
-margin:6px;
-background:linear-gradient(90deg,#39ff14,#0f0);
-color:#000;
-font-weight:800;
-border-radius:10px;
-text-decoration:none;
-transition:.2s;
-box-shadow:0 0 22px rgba(57,255,20,.45);
-border:none;
-cursor:pointer;
+ display:inline-block;
+ padding:14px 26px;
+ margin:6px;
+ background:linear-gradient(90deg,#39ff14,#0f0);
+ color:#000;
+ font-weight:800;
+ border-radius:10px;
+ text-decoration:none;
+ transition:.2s;
+ box-shadow:0 0 22px rgba(57,255,20,.45);
+ border:none;
+ cursor:pointer;
 }
 .btn:hover{
-transform:translateY(-3px) scale(1.03);
+ transform:translateY(-3px) scale(1.03);
 }
 
 /* CARDS */
 .card{
-background:rgba(4,10,4,.88);
-border:1px solid rgba(57,255,20,.15);
-backdrop-filter:blur(12px);
-border-radius:16px;
-padding:22px;
-text-align:center;
+ background:rgba(4,10,4,.88);
+ border:1px solid rgba(57,255,20,.15);
+ backdrop-filter:blur(12px);
+ border-radius:16px;
+ padding:22px;
+ text-align:center;
 }
 
 /* IMAGES */
 .img-wrap{
-width:100%;
-margin:auto;
-border-radius:18px;
-overflow:hidden;
-box-shadow:0 0 25px rgba(57,255,20,.35);
+ width:100%;
+ margin:auto;
+ border-radius:18px;
+ overflow:hidden;
+ box-shadow:0 0 25px rgba(57,255,20,.35);
 }
 .img-wrap img{
-width:100%;
-height:340px;          
-object-fit:cover;      
-object-position:center;
+ width:100%;
+ height:340px;          
+ object-fit:cover;      
+ object-position:center;
 }
 
 /* PEPE CATCHER GAME */
 #catcher{
-max-width:600px;
-margin:40px auto;
-padding:20px;
-background:#010401;
-border:1px solid var(--accent);
-border-radius:16px;
-text-align:center;
-position:relative;
-overflow:hidden;
-height:400px;
+ max-width:600px;
+ margin:40px auto;
+ padding:20px;
+ background:#010401;
+ border:1px solid var(--accent);
+ border-radius:16px;
+ text-align:center;
+ position:relative;
+ overflow:hidden;
+ height:400px;
 }
 
 #basket{
-position:absolute;
-bottom:10px;
-left:50%;
-transform:translateX(-50%);
-width:100px;
-height:30px;
-background:linear-gradient(90deg,#39ff14,#0f0);
-border-radius:12px;
-box-shadow:0 0 20px rgba(57,255,20,.5);
+ position:absolute;
+ bottom:10px;
+ left:50%;
+ transform:translateX(-50%);
+ width:100px;
+ height:30px;
+ background:linear-gradient(90deg,#39ff14,#0f0);
+ border-radius:12px;
+ box-shadow:0 0 20px rgba(57,255,20,.5);
 }
 
 .pepe-drop{
-position:absolute;
-top:-50px;
-width:40px;
-height:40px;
-border-radius:50%;
-pointer-events:none;
-user-select:none;
-box-shadow:0 0 15px #39ff14;
+ position:absolute;
+ top:-50px;
+ width:40px;
+ height:40px;
+ border-radius:50%;
+ pointer-events:none;
+ user-select:none;
+ box-shadow:0 0 15px #39ff14;
 }
 
 #scoreBoard{
-font-size:20px;
-color:#7ed957;
-margin-bottom:12px;
+ font-size:20px;
+ color:#7ed957;
+ margin-bottom:12px;
 }
 </style>
 </head>
@@ -182,7 +181,7 @@ TikTok
 </div>
 
 <div class="img-wrap">
-<img src="PEPE 21.jpg">
+ <img src="PEPE 21.jpg">
 </div>
 </section>
 
@@ -268,11 +267,11 @@ window.onresize=resize
 const symbols=["$PEPE","🐸","XRP","PEPE"]
 let particles=[]
 for(let i=0;i<70;i++){
-particles.push({x:Math.random()*c.width,y:Math.random()*c.height,speed:Math.random()*1.2+.4,size:Math.random()*18+14,text:symbols[Math.floor(Math.random()*symbols.length)],glow:Math.random()*14})
+ particles.push({x:Math.random()*c.width,y:Math.random()*c.height,speed:Math.random()*1.2+.4,size:Math.random()*18+14,text:symbols[Math.floor(Math.random()*symbols.length)],glow:Math.random()*14})
 }
 function draw(){
-x.clearRect(0,0,c.width,c.height)
-particles.forEach(p=>{
+ x.clearRect(0,0,c.width,c.height)
+ particles.forEach(p=>{
   x.font=`bold ${p.size}px system-ui`
   x.fillStyle="#39ff14"
   x.shadowColor="#39ff14"
@@ -280,8 +279,8 @@ particles.forEach(p=>{
   x.fillText(p.text,p.x,p.y)
   p.y+=p.speed
   if(p.y>c.height+40){p.y=-20;p.x=Math.random()*c.width;p.text=symbols[Math.floor(Math.random()*symbols.length)]}
-})
-requestAnimationFrame(draw)
+ })
+ requestAnimationFrame(draw)
 }
 draw()
 
@@ -292,29 +291,29 @@ let score=0
 let drops=[]
 let speedBase=2
 
-constdropImg="PEPE 2.jpg" // small drop image
+const dropImg="PEPE 2.jpg" // small drop image
 
 function createDrop(){
-const drop=document.createElement("img")
-drop.src=dropImg
-drop.className="pepe-drop"
-drop.style.left=Math.random()*(catcher.clientWidth-40)+"px"
-drop.style.top="-50px"
-drop.style.width="40px"
-drop.style.height="40px"
-drop.style.boxShadow=`0 0 ${5+Math.random()*10}px #39ff14`
-catcher.appendChild(drop)
-drops.push(drop)
+ const drop=document.createElement("img")
+ drop.src=dropImg
+ drop.className="pepe-drop"
+ drop.style.left=Math.random()*(catcher.clientWidth-40)+"px"
+ drop.style.top="-50px"
+ drop.style.width="40px"
+ drop.style.height="40px"
+ drop.style.boxShadow=`0 0 ${5+Math.random()*10}px #39ff14`
+ catcher.appendChild(drop)
+ drops.push(drop)
 }
 
 function moveDrops(){
-drops.forEach((drop,index)=>{
+ drops.forEach((drop,index)=>{
   let currentTop=parseFloat(drop.style.top)
   currentTop += speedBase + score*0.05 // increase speed as score rises
   drop.style.top=currentTop+"px"
-  constdropRect=drop.getBoundingClientRect()
-  constbasketRect=basket.getBoundingClientRect()
-  if(!(dropRect.bottom<basketRect.top || dropRect.top>basketRect.bottom || dropRect.right<basketRect.left || dropRect.left>basketRect.right)){
+  const dropRect=drop.getBoundingClientRect()
+  const basketRect=basket.getBoundingClientRect()
+  if(!(dropRect.bottom < basketRect.top || dropRect.top > basketRect.bottom || dropRect.right < basketRect.left || dropRect.left > basketRect.right)){
    score++
    document.getElementById("scoreBoard").innerText="Score: "+score
    drop.remove()
@@ -323,18 +322,18 @@ drops.forEach((drop,index)=>{
    drop.remove()
    drops.splice(index,1)
   }
-})
-requestAnimationFrame(moveDrops)
+ })
+ requestAnimationFrame(moveDrops)
 }
 
 function moveBasket(e){
-constrect=catcher.getBoundingClientRect()
-let x
-if(e.type==="mousemove") x=e.clientX-rect.left-basket.clientWidth/2
-else if(e.type==="touchmove") x=e.touches[0].clientX-rect.left-basket.clientWidth/2
-if(x<0) x=0
-if(x>catcher.clientWidth-basket.clientWidth) x=catcher.clientWidth-basket.clientWidth
-basket.style.left=x+"px"
+ const rect=catcher.getBoundingClientRect()
+ let x
+ if(e.type==="mousemove") x=e.clientX-rect.left-basket.clientWidth/2
+ else if(e.type==="touchmove") x=e.touches[0].clientX-rect.left-basket.clientWidth/2
+ if(x<0) x=0
+ if(x>catcher.clientWidth-basket.clientWidth) x=catcher.clientWidth-basket.clientWidth
+ basket.style.left=x+"px"
 }
 
 catcher.addEventListener("mousemove",moveBasket)
@@ -345,12 +344,12 @@ moveDrops()
 
 // DEX CHART SWITCHER
 function setChart(type){
-const base="https://dexscreener.com/xrpl/5045504500000000000000000000000000000000.rjeapmjv7kvvopb8nb1wxqpqyvu84vrgta_xrp?embed=1&theme=dark"
-const modes={
+ const base="https://dexscreener.com/xrpl/5045504500000000000000000000000000000000.rjeapmjv7kvvopb8nb1wxqpqyvu84vrgta_xrp?embed=1&theme=dark"
+ const modes={
   price: base + "&trades=1",
   liquidity: base + "&info=1"
-}
-document.getElementById("dexChart").src = modes[type]
+ }
+ document.getElementById("dexChart").src = modes[type]
 }
 
 // YEAR
@@ -359,6 +358,3 @@ document.getElementById("year").innerText=new Date().getFullYear()
 
 </body>
 </html>
-
-
-
