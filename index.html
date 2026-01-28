@@ -5,20 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>$PEPE ON XRP – Community Crypto</title>
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+
 <style>
 :root{
  --accent:#39ff14;
  --bg:#000;
  --card:#040604;
- --text:#eaffea;
+ --text:#ffffff; /* main content text */
+ --text-glow:rgba(57,255,20,0.6); /* neon glow for text */
+ --footer:#bbbbbb; /* faint footer text */
  --muted:#7ed957;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
  background:#000;
  color:var(--text);
  overflow-x:hidden;
+ font-family:'Inter', system-ui, sans-serif;
+ line-height:1.6;
 }
 
 /* BACKGROUND LAYERS */
@@ -70,6 +77,28 @@ section{
  .hero{grid-template-columns:1.1fr .9fr}
 }
 
+/* HEADINGS */
+h1,h2,h3{
+ font-family:'Poppins', system-ui, sans-serif;
+ font-weight:800;
+ color:var(--text);
+ text-shadow:0 0 6px var(--text-glow), 0 0 12px var(--text-glow);
+ margin-bottom:16px;
+}
+h1{font-size:3rem; line-height:1.2;}
+h2{font-size:2.2rem; line-height:1.3;}
+h3{font-size:1.5rem; line-height:1.3;}
+
+/* PARAGRAPHS */
+p{
+ font-family:'Inter', system-ui, sans-serif;
+ font-weight:500;
+ color:var(--text);
+ text-shadow:0 0 4px var(--text-glow);
+ font-size:1rem;
+ margin-bottom:12px;
+}
+
 /* BUTTONS */
 .btn{
  display:inline-block;
@@ -77,16 +106,47 @@ section{
  margin:6px;
  background:linear-gradient(90deg,#39ff14,#0f0);
  color:#000;
- font-weight:800;
+ font-weight:800; /* all buttons bold */
  border-radius:10px;
  text-decoration:none;
  transition:.2s;
  box-shadow:0 0 22px rgba(57,255,20,.45);
  border:none;
  cursor:pointer;
+ font-family:'Inter', sans-serif;
+ text-align:center;
 }
 .btn:hover{
  transform:translateY(-3px) scale(1.03);
+}
+
+/* DROPDOWN */
+.dropdown{
+ position:relative;
+ display:inline-block;
+}
+.dropdown-content{
+ display:none;
+ position:absolute;
+ background:#010401;
+ border:1px solid #39ff14;
+ border-radius:10px;
+ min-width:260px;
+ z-index:10;
+}
+.dropdown-content a{
+ display:block;
+ padding:12px 16px;
+ color:#39ff14;
+ text-decoration:none;
+ font-weight:800; /* bold links too */
+}
+.dropdown-content a:hover{
+ background:#39ff14;
+ color:#000;
+}
+.dropdown:hover .dropdown-content{
+ display:block;
 }
 
 /* CARDS */
@@ -97,9 +157,12 @@ section{
  border-radius:16px;
  padding:22px;
  text-align:center;
+ font-family:'Inter', sans-serif;
+ color:var(--text);
+ text-shadow:0 0 3px var(--text-glow);
 }
 
-/* IMAGES */
+/* IMAGES — FULLY VISIBLE */
 .img-wrap{
  width:100%;
  margin:auto;
@@ -110,11 +173,12 @@ section{
 .img-wrap img{
  width:100%;
  height:340px;
- object-fit:cover;
+ object-fit:contain;
  object-position:center;
+ background:#000;
 }
 
-/* PEPE CATCHER GAME */
+/* GAME */
 #catcher{
  max-width:600px;
  margin:40px auto;
@@ -153,6 +217,17 @@ section{
  font-size:20px;
  color:#7ed957;
  margin-bottom:12px;
+ font-family:'Inter', sans-serif;
+ text-shadow:0 0 4px var(--text-glow);
+}
+
+/* FOOTER */
+footer{
+ text-align:center;
+ padding:40px 20px;
+ font-family:'Inter', sans-serif;
+ color:var(--footer);
+ font-weight:500;
 }
 </style>
 </head>
@@ -167,8 +242,18 @@ section{
 <h1>$PEPE ON XRP</h1>
 <p>The ultimate meme ecosystem on XRP Ledger — NFTs, GameFi, community governance and unstoppable frog energy.</p>
 
-<a class="btn" href="#" id="buyLink">Buy $PEPE</a>
-<a class="btn" href="https://xrp.cafe/de/collection/pepe-mosaic-nft-collection" target="_blank">NFT Path</a>
+<a class="btn" href="#howtobuy">How to Buy</a>
+
+<div class="dropdown">
+ <button class="btn">NFT Path</button>
+ <div class="dropdown-content">
+  <a href="https://xrp.cafe/de/collection/pepe-mosaic-nft-collection" target="_blank">Pepe Mosaic</a>
+  <a href="https://xrp.cafe/collection/pepexrpv2" target="_blank">Pepe XRP V2</a>
+  <a href="https://xrp.cafe/collection/pepe-on-xrpl" target="_blank">Pepe on XRPL</a>
+  <a href="https://xrp.cafe/collection/pepe-stake" target="_blank">Pepe Stake</a>
+ </div>
+</div>
+
 <a class="btn" href="https://www.tiktok.com/@pepe_on_xrp?_t=8ruE1SfndRm&_r=1" target="_blank">TikTok</a>
 <a class="btn" href="https://x.com/PEPE_ON_XRPL" target="_blank">Twitter</a>
 </div>
@@ -181,7 +266,7 @@ section{
 <!-- ABOUT -->
 <section class="hero">
 <div class="img-wrap">
-  <img src="PEPE 10.jpg">
+ <img src="PEPE 10.jpg">
 </div>
 <div>
 <h2>About $PEPE ON XRP</h2>
@@ -189,21 +274,21 @@ section{
 </div>
 </section>
 
-<!-- UTILITIES -->
-<section class="hero">
-<div class="card">
-<h3>NFT Path</h3>
-<p>Mint, upgrade and evolve your Pepe NFTs on-chain.</p>
-</div>
-<div class="card">
-<h3>GameFi</h3>
-<p>Interactive games and fun challenges for community engagement.</p>
-</div>
+<!-- HOW TO BUY -->
+<section id="howtobuy">
+<h2>HOW TO BUY $PEPE XRP 🐸</h2>
+<p>
+1. Set up a <strong>Xaman Wallet</strong>. Write down your recovery phrase and keep it safe.<br><br>
+2. Xaman is a holding wallet. To trade, connect it to <strong>Magnetic</strong>, XPMarket, or Horizon. Joey Wallet is an alternative.<br><br>
+3. Buy <strong>XRP</strong> from any exchange (CoinSpot, Coinbase, etc).<br><br>
+4. Send XRP to your Xaman receive address.<br><br>
+5. Open Xaman → Apps → Magnetic → Trade → Buy <strong>$PEPE / XRP</strong>.
+</p>
 </section>
 
 <!-- GAME -->
 <section id="catcher">
-<h2>🎯 Catch the Pepe</h2>
+<h2>🎯 Catch the Pepe (Just for Fun)</h2>
 <div id="scoreBoard">Score: 0</div>
 <div id="basket"></div>
 </section>
@@ -214,15 +299,14 @@ section{
 <div style="max-width:1100px;margin:auto;border:1px solid #39ff14;border-radius:16px;overflow:hidden">
 <iframe id="dexChart"
 src="https://dexscreener.com/xrpl/5045504500000000000000000000000000000000.rjeapmjv7kvvopb8nb1wxqpqyvu84vrgta_xrp?embed=1&theme=dark"
-style="width:100%;height:600px;border:0">
-</iframe>
+style="width:100%;height:600px;border:0"></iframe>
 </div>
 </section>
 
 <!-- COMMUNITY -->
 <section class="hero">
 <div class="img-wrap">
-  <img src="PEPE 6.jpg">
+ <img src="PEPE 6.jpg">
 </div>
 <div>
 <h2>Join the Frog Army</h2>
@@ -240,13 +324,13 @@ style="width:100%;height:600px;border:0">
 const c=document.getElementById("bg"),x=c.getContext("2d")
 function resize(){c.width=innerWidth;c.height=innerHeight}
 resize();onresize=resize
-const symbols=["$PEPE","🐸","XRP","PEPE"]
+const symbols=["$PEPE","🐸","XRP"]
 let particles=[]
 for(let i=0;i<70;i++)particles.push({x:Math.random()*c.width,y:Math.random()*c.height,s:Math.random()*1.2+.4,sz:Math.random()*18+14,t:symbols[Math.floor(Math.random()*symbols.length)],g:Math.random()*14})
 function draw(){
  x.clearRect(0,0,c.width,c.height)
  particles.forEach(p=>{
-  x.font=`bold ${p.sz}px system-ui`
+  x.font=`bold ${p.sz}px 'Poppins', system-ui`
   x.fillStyle="#39ff14"
   x.shadowColor="#39ff14"
   x.shadowBlur=p.g
